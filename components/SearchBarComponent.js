@@ -16,7 +16,7 @@ export default class SearchBarComponent extends Component {
 
         return(
             <SearchBar
-                placeholder="Taper le pokemon recherché"
+                placeholder="Type Pokemon for Search"
                 onChangeText={ () => this.updateSearch}
                 value={ search }
             />
