@@ -1,14 +1,19 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import HomeScreen from '../app/Home.js'
-import Single from '../app/Single.js'
+import Main from '../app/Main'
+import Account from '../app/Account'
+import Login from '../app/Login'
+import Single from '../app/Single'
 
 const AppNavigator = createStackNavigator(
     {
-        Home: HomeScreen,
-        Single: Single
+      Home: { screen: Main },
+      Single: { screen: Single },
+      Account: { screen: Account },
+      Login: { screen: Login }
     },
     {
-        initialRouteName: "Home"
+      headerMode: "none",
+      initialRoute: "Home"
     }
 );
 
