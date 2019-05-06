@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import AppContainer from './navigation/AppNavigator';
 
 class App extends Component {
+
     render() {
-        return <AppContainer />
+        return (
+              <AppContainer />
+        )
     }
 }
 

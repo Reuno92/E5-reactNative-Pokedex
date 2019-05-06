@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import {View, TouchableOpacity, Text, Button, Image, StyleSheet} from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { SPRITE } from "../../constants/Sprite";
 
 /**
  *  Help by Andrew on https://stackoverflow.com/questions/55140139/react-native-async-array-map-undefined-is-not-an-object
  *  I do not resolve to appeal to the teacher overdue. He will may resting, his health is more important than my homework.
  */
-
 export default class ListPokemon extends Component {
 
 	constructor(props) {
 		super(props);
-
-		console.log(props);
+		// console.log(props);
 	}
 
 	state = {
@@ -30,7 +29,7 @@ export default class ListPokemon extends Component {
 		}
 	};
 
-	updateCaptured() {
+	updateCaptured( ) {
 		this.setState({captured: !this.state.captured})
 	}
 
@@ -84,7 +83,7 @@ export default class ListPokemon extends Component {
 	getId = (index) => {
 		let id = /(?=\/).\d{1,3}/gi;
 		let arr = id.exec(this.state.data.results[index].url);
-		return arr[0]
+		return arr[0].replace('/', '')
 	};
 
 	async componentDidMount() {
@@ -93,7 +92,7 @@ export default class ListPokemon extends Component {
 
 	render() {
 		return (
-			<View>
+			<View style={{ maxHeight: 389}}>
 				<View style={style.resultList}>
 					<Text style={style.heading}>{this.state.title}</Text>
 					<View style={style.action}>
@@ -108,11 +107,11 @@ export default class ListPokemon extends Component {
 						if (index % 2 === 0) {
 							return (
 								<TouchableOpacity key={index}
-											style={[style.resultList, {backgroundColor: '#B7EAE6'}]}
-											onPress={ () => this.goToPokemon(this.getId(index)) }>
+																	style={[style.resultList, {backgroundColor: '#B7EAE6'}]}
+																	onPress={() => this.goToPokemon(this.getId(index))}>
 									<Image
 										style={[{width: 10, height: 30}, style.icon]}
-										source={{uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon' + this.getId(index) + '.png'}}/>
+										source={{uri: SPRITE.FRONT_DEFAULT + this.getId(index) + '.png'}}/>
 									<Text style={[style.name, {textTransform: 'capitalize'}]}>{item.name}</Text>
 									<View style={style.action}>
 										<Icon.Button name="pokeball" style={style.actionItem}
@@ -132,7 +131,7 @@ export default class ListPokemon extends Component {
 																	onPress={ () => this.goToPokemon(this.getId(index)) }>
 									<Image
 										style={[{width: 10, height: 30}, style.icon]}
-										source={{uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon' + this.getId(index) + '.png'}}/>
+										source={{uri: SPRITE.FRONT_DEFAULT + this.getId(index) + '.png'}}/>
 									<Text style={[style.name, {textTransform: 'capitalize'}]}>{item.name}</Text>
 									<Text style={style.id}>{item.id}</Text>
 									<View style={style.action}>
